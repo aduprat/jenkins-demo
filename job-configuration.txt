@@ -1,0 +1,36 @@
+----
+Git daemon
+$ git daemon --export-all --base-path=. --listen=172.17.42.1 --enable=receive-pack --verbose
+
+----
+Jenkins 
+
+Parameters
+originBranch
+toMergeBranch
+
+
+Git configurations
+git://172.17.42.1/
+Name
+origin
+Refspec
++refs/heads/${originBranch}:refs/remotes/origin/master
+
+Name
+toMerge
+Refspec
++refs/heads/${toMergeBranch}:refs/remotes/destination/master
+
+Additional Behaviour
+Merge before build
+origin/${originBranch}
+
+Custom user name/email
+jenkins
+jenkins@localhost.org
+
+
+Git Publisher
+Push Only If Build Succeeds: checked
+Merge Results: checked
