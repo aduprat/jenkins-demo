@@ -1,2 +1,27 @@
 job("Git sync") {
+    parameters {
+        stringParam('originBranch')
+        stringParam('toMergeBranch')
+    }
+    scm {
+        git {
+            remote {
+                name('origin')
+                url('git://172.17.42.1/')
+                refspec('+refs/heads/${originBranch}:refs/remotes/origin/master')
+            }
+            remote {
+                name('toMerge')
+                url('git://172.17.42.1/')
+                refspec('+refs/heads/${toMergeBranch}:refs/remotes/origin/master')
+            }
+            mergeOptions('origin', '${originBranch}')
+        }
+    }
+    publishers {
+        git {
+            pushOnlyIfSuccess()
+            pushMerge()
+        }
+    }
 }

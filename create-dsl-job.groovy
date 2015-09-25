@@ -10,7 +10,7 @@ jobName = "create-dsl-job";
 dslProject = new hudson.model.FreeStyleProject(jenkins, jobName);
 
 dslProject.scm = new GitSCM("https://github.com/aduprat/jenkins-demo.git");
-dslProject.scm.branches = [new BranchSpec("*/1")];
+dslProject.scm.branches = [new BranchSpec("*/2")];
 
 gitTrigger = new SCMTrigger("* * * * *");
 dslProject.addTrigger(gitTrigger);
