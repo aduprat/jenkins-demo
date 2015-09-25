@@ -9,8 +9,13 @@ jenkins = Jenkins.instance;
 jobName = "create-dsl-job";
 dslProject = new hudson.model.FreeStyleProject(jenkins, jobName);
 
+gitSCM = Jenkins.instance.getExtensionList(hudson.plugins.git.GitSCM.DescriptorImpl.class)[0];
+gitSCM.globalConfigName = "jenkins";
+gitSCM.globalConfigEmail = "jenkins@localhost.org"
+gitSCM.save();
+
 dslProject.scm = new GitSCM("https://github.com/aduprat/jenkins-demo.git");
-dslProject.scm.branches = [new BranchSpec("*/2")];
+dslProject.scm.branches = [new BranchSpec("*/3")];
 
 gitTrigger = new SCMTrigger("* * * * *");
 dslProject.addTrigger(gitTrigger);
