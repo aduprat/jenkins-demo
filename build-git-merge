@@ -16,6 +16,10 @@ job("Git sync") {
                 refspec('+refs/heads/${toMergeBranch}:refs/remotes/origin/master')
             }
             mergeOptions('origin', '${originBranch}')
+            customUser {
+                name('jenkins')
+                email('jenkins@localhost.org')
+            }
         }
     }
     publishers {
