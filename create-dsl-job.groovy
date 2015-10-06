@@ -15,7 +15,7 @@ gitSCM.globalConfigEmail = "jenkins@localhost.org"
 gitSCM.save();
 
 dslProject.scm = new GitSCM("https://github.com/aduprat/jenkins-demo.git");
-dslProject.scm.branches = [new BranchSpec("*/3")];
+dslProject.scm.branches = [new BranchSpec("*/5")];
 
 gitTrigger = new SCMTrigger("* * * * *");
 dslProject.addTrigger(gitTrigger);
